@@ -436,7 +436,7 @@ while (!atomicReference.compareAndSet(null, thread)) { }
 
 `synchronized`关键字和`java.util.concurrent.locks.Lock`都能加锁，两者有什么区别呢？
 
-1. **原始构成**：`sync`是JVM层面的，底层通过`monitorenter`和`monitorexit`来实现的。`Lock`是JDK API层面的。（`sync`一个enter会有两个exit，一个是正常退出，一个是异常退出）
+1. **原始构成**：`sync`是JVM层面的，底层通过`monitorenter`和`monitorexit`来实现的。`Lock`是JDK API层面的。（`sync`一个enter会有两个exit，一个是正常退出，一个是异常退出。sync是java的关键字，而lock是具体的类）
 2. **使用方法**：`sync`不需要手动释放锁，而`Lock`需要手动释放。
 3. **是否可中断**：`sync`不可中断，除非抛出异常或者正常运行完成。`Lock`是可中断的，通过调用`interrupt()`方法。
 4. **是否为公平锁**：`sync`只能是非公平锁，而`Lock`既能是公平锁，又能是非公平锁。
